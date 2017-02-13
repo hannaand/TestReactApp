@@ -80,6 +80,10 @@
 
 	var _thebase2 = _interopRequireDefault(_thebase);
 
+	var _data = __webpack_require__(247);
+
+	var _data2 = _interopRequireDefault(_data);
+
 	var _firebase = __webpack_require__(239);
 
 	var firebase = _interopRequireWildcard(_firebase);
@@ -89,8 +93,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// Initialize Firebase
-
-	// Import routing components
 	var config = {
 		apiKey: "AIzaSyAyBvFrbjLZMvpGzFeqzsBDXlX1sms0Xjc",
 		authDomain: "reactapp-c7c73.firebaseapp.com",
@@ -98,6 +100,8 @@
 		storageBucket: "reactapp-c7c73.appspot.com",
 		messagingSenderId: "111590817556"
 	};
+	// Import routing components
+
 	firebase.initializeApp(config);
 
 	var App = _react2.default.createClass({
@@ -168,6 +172,15 @@
 							{ to: "/thebase", activeClassName: "active" },
 							"TheBase"
 						)
+					),
+					_react2.default.createElement(
+						"li",
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: "/data", activeClassName: "active" },
+							"Data"
+						)
 					)
 				),
 				_react2.default.createElement(
@@ -193,7 +206,8 @@
 			_react2.default.createElement(_reactRouter.Route, { path: "/todolist", component: _todolist2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/new", component: _counter2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/click", component: _click2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: "/thebase", component: _thebase2.default })
+			_react2.default.createElement(_reactRouter.Route, { path: "/thebase", component: _thebase2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: "/data", component: _data2.default })
 		)
 	), destination);
 
@@ -26778,6 +26792,7 @@
 
 			e.preventDefault();
 		},
+
 		render: function render() {
 			var _this = this;
 
@@ -27890,6 +27905,82 @@
 	module.exports = firebase.messaging;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 245 */,
+/* 246 */,
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var xhr;
+
+	var IPAddressDisplay = _react2.default.createClass({
+		displayName: "IPAddressDisplay",
+
+		render: function render() {
+			return _react2.default.createElement(
+				"div",
+				null,
+				_react2.default.createElement(
+					"h3",
+					null,
+					this.props.ip
+				),
+				_react2.default.createElement(
+					"h4",
+					null,
+					"( This is your IP address...probably :P)"
+				)
+			);
+		}
+	});
+
+	var IPAddressContainer = _react2.default.createClass({
+		displayName: "IPAddressContainer",
+
+		getInitialState: function getInitialState() {
+			return {
+				ip_address: "..."
+			};
+		},
+		componentDidMount: function componentDidMount() {
+			xhr = new XMLHttpRequest();
+			xhr.open('GET', "https://ipinfo.io/json", true);
+			xhr.send();
+
+			xhr.addEventListener("readystatechange", this.processRequest, false);
+		},
+		processRequest: function processRequest() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				var response = JSON.parse(xhr.responseText);
+
+				this.setState({
+					ip_address: response.ip
+				});
+			}
+		},
+		render: function render() {
+			return _react2.default.createElement(IPAddressDisplay, { ip: this.state.ip_address });
+		}
+	});
+
+	exports.default = IPAddressContainer;
 
 /***/ }
 /******/ ]);

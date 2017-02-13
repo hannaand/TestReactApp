@@ -8,6 +8,7 @@ import Card from './components/card.jsx'
 import LightningCounterDisplay from './components/counter.jsx'
 import CounterParent from './components/click.jsx'
 import TheBase from './components/thebase.jsx'
+import IPAddressContainer from './components/data.jsx'
 import * as firebase from 'firebase'
 
 // Initialize Firebase
@@ -32,6 +33,7 @@ var App = React.createClass({
 					<li><Link to="/new" activeClassName="active">Counter</Link></li>
 					<li><Link to="/click" activeClassName="active">Click</Link></li>
 					<li><Link to="/thebase" activeClassName="active">TheBase</Link></li>
+					<li><Link to="/data" activeClassName="active">Data</Link></li>
 				</ul>
 				<div className="content">
 					{this.props.children}
@@ -51,6 +53,7 @@ ReactDOM.render(
 			<Route path="/new" component={LightningCounterDisplay} />
 			<Route path="/click" component={CounterParent} />
 			<Route path="/thebase" component={TheBase} />
+			<Route path="/data" component={IPAddressContainer} />
 		</Route>
 	</Router>,
 	destination

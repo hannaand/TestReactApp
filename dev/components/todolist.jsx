@@ -44,6 +44,7 @@ var TodoItems = React.createClass({
 				e.preventDefault();
 
 			},
+			
 			render: function() {
 				return (
 					<div className="todoListMain">
