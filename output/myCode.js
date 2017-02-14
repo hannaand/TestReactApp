@@ -80,7 +80,7 @@
 
 	var _thebase2 = _interopRequireDefault(_thebase);
 
-	var _data = __webpack_require__(247);
+	var _data = __webpack_require__(245);
 
 	var _data2 = _interopRequireDefault(_data);
 
@@ -27907,9 +27907,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 245 */,
-/* 246 */,
-/* 247 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
