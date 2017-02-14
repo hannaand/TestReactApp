@@ -1,4 +1,4 @@
-# ${1:TestReactApp}
+# TestReactApp
 This is a test App with React. My idea is to test various functions and present it in a very simple single page app.
 ## Installation
 Clone the repo and open it in your browser. 
